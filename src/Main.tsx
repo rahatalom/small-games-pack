@@ -1,6 +1,5 @@
 import React from "react";
 import { Tabs } from "antd";
-import { AppleOutlined } from "@ant-design/icons";
 import "./Main.css"
 import { Wordle } from "./Wordle";
 import { Snake } from "./Snake";
