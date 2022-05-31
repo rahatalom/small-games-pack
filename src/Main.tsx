@@ -11,7 +11,7 @@ export const MainPage: React.FC = () => {
       <Tabs.TabPane
         tab={
           <span>
-            <AppleOutlined style={{padding:"3px"}} />
+            ⓦ
             Wordle tab
           </span>
         }
