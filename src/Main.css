@@ -1,0 +1,13 @@
+.ant-tabs-tab{
+    display: inline-flex;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.ant-tabs-nav-list{
+    text-align: center;
+}
+
+.ant-tabs-tab-active{
+    border-bottom: lightgray 2px solid;
+}

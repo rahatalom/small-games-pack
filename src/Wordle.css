@@ -1,0 +1,18 @@
+.word-page {
+  text-align: "center";
+  color: "gray";
+}
+
+.wordle-page-content {
+  border-radius: "60px";
+  background-color: "whitesmoke";
+  padding-top: "40px";
+  padding-bottom: "60px";
+  margin: " 0 160px";
+}
+
+.wordle-page-input {
+  border: "solid 2px";
+  margin: "0 350px";
+  border-radius: "60px";
+}
