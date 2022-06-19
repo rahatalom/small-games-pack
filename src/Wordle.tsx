@@ -1,7 +1,8 @@
 import { Button, Input } from "antd";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { WordleLetters } from "./WordleLetters";
 import { mywordList } from "./mywordList";
+import { Keyboard } from "./Keyboard";
 
 const myword = mywordList[Math.floor(Math.random() * mywordList.length)];
 
@@ -28,7 +29,7 @@ const wordLetterCheck = (input: string) => {
 };
 
 export const Wordle: React.FC = () => {
-  const [word, setWord]: any = useState("");
+  const [word, setWord]: [string, Dispatch<SetStateAction<string>>] = useState("");
   const [wordArray, setWordArray]: any = useState([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [triesLeft, setTriesLeft] = useState(6);
@@ -61,6 +62,7 @@ export const Wordle: React.FC = () => {
               cursor: "pointer",
               textTransform: "uppercase",
             }}
+            value={word}
             onChange={(e) => setWord(e.target.value)}
           />
           {word.length === 5 && !isCorrect  && triesLeft !== 0? (
@@ -78,6 +80,7 @@ export const Wordle: React.FC = () => {
                   wordLetterCheck(word),
                 ]);
                 setWordArray([...wordArray, word]);
+                setWord("")
               }}
             >
               Go!
@@ -109,6 +112,7 @@ export const Wordle: React.FC = () => {
             />
           </div>
         ))}
+        <Keyboard word={word} setWord={setWord}/>
 
         {triesLeft === 0? <h2>The word was: {myword} </h2>: null}
       </div>
