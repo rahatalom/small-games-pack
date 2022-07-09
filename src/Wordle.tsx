@@ -17,7 +17,7 @@ const wordLetterCheck = (input: string) => {
     // mywordArray.forEach((letter) => letter === wordArray[i]? letterOccurance1++: null)
     // wordSoFar.forEach((letter) => letter === wordArray[i]? letterOccurance2++: null)
     const isMatch = wordArray[i] === mywordArray[i];
-    const isInWord = mywordArray.includes(wordArray[i]) 
+    const isInWord = mywordArray.includes(wordArray[i]);
     isMatch
       ? truthArray.push("t")
       : isInWord
@@ -29,15 +29,18 @@ const wordLetterCheck = (input: string) => {
 };
 
 export const Wordle: React.FC = () => {
-  const [word, setWord]: [string, Dispatch<SetStateAction<string>>] = useState("");
-  const [wordArray, setWordArray]: any = useState([]);
+  const [word, setWord]: [string, Dispatch<SetStateAction<string>>] =
+    useState("");
+  const [wordArray, setWordArray]= useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [triesLeft, setTriesLeft] = useState(6);
-  const [letterCorrectArray, setLetterCorrectArray]: any = useState([]);
+  const [letterCorrectArray, setLetterCorrectArray] = useState<any>([]);
 
   return (
-    <div  style={{ textAlign: "center", color: "gray" }}>
-      <h1>Wordle</h1>
+    <div style={{ textAlign: "center", color: "gray" }}>
+      <h1>
+        Wordle
+      </h1>
       <div
         style={{
           borderRadius: "60px",
@@ -65,7 +68,7 @@ export const Wordle: React.FC = () => {
             value={word}
             onChange={(e) => setWord(e.target.value)}
           />
-          {word.length === 5 && !isCorrect  && triesLeft !== 0? (
+          {word.length === 5 && !isCorrect && triesLeft !== 0 ? (
             <Button
               style={{
                 margin: "6px",
@@ -80,7 +83,7 @@ export const Wordle: React.FC = () => {
                   wordLetterCheck(word),
                 ]);
                 setWordArray([...wordArray, word]);
-                setWord("")
+                setWord("");
               }}
             >
               Go!
@@ -112,9 +115,14 @@ export const Wordle: React.FC = () => {
             />
           </div>
         ))}
-        <Keyboard word={word} setWord={setWord}/>
+        <Keyboard
+          word={word}
+          wordArray={wordArray}
+          setWord={setWord}
+          keyBoardColours={letterCorrectArray}
+        />
 
-        {triesLeft === 0? <h2>The word was: {myword} </h2>: null}
+        {triesLeft === 0 ? <h2>The word was: {myword} </h2> : null}
       </div>
     </div>
   );
